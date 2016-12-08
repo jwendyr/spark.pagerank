@@ -46,7 +46,7 @@ public final class SparkPageRank {
 			System.exit(1);
 		}
 
-		final SparkConf sparkConf = new SparkConf().setAppName("PageRank");
+		final SparkConf sparkConf = new SparkConf().setAppName("SparkPageRank");
 		final JavaSparkContext ctx = new JavaSparkContext(sparkConf);
 
 		// Loads in input file. It should be in format of:
