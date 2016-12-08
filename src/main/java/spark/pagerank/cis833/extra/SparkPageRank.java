@@ -55,7 +55,7 @@ public final class SparkPageRank {
 		//     URL         neighbor URL
 		//     ...
 		final JavaRDD<String> lines = ctx.textFile(args[0], 1);
-		final int ITERATIONS = 10; //Integer.parseInt(args[1]);
+		final int ITERATIONS = Integer.parseInt(args[1]);
 
 		// Loads all URLs from input file and initialize their neighbors.
 		final JavaPairRDD<String, Iterable<String>> links = lines.mapToPair(s -> {
