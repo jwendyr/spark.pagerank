@@ -19,6 +19,9 @@ Spark Page Rank
     git clone https://github.com/jwendyr/spark.pagerank.git
     cd spark.pagerank/
     mvn clean package
+    
+**No.1**
+
     unzip scowiki-20090929-one-page-per-line.zip
     hadoop fs -mkdir input
     hadoop fs -mkdir input/SparkPageRank
@@ -29,3 +32,26 @@ Spark Page Rank
     hadoop fs -copyToLocal output/SparkPageRank/part-00000 1
     head -n 100 1
 
+**No.2**
+
+    unzip afwiki-20091002-one-page-per-line.zip
+    hadoop fs -mkdir input
+    hadoop fs -mkdir input/SparkPageRank
+    hadoop fs -copyFromLocal afwiki-20091002-one-page-per-line input/SparkPageRank/2
+    hadoop fs -rm -r output/SparkPageRank
+    cd target/
+    spark-submit --class com.spark.cis833.extra.SparkPageRank --master yarn cis833.extra-0.0.1-SNAPSHOT.jar input/SparkPageRank/2 output/SparkPageRank
+    hadoop fs -copyToLocal output/SparkPageRank/part-00000 2
+    head -n 100 2
+    
+**No.3**
+
+    unzip WikiProject.zip
+    hadoop fs -mkdir input
+    hadoop fs -mkdir input/SparkPageRank
+    hadoop fs -copyFromLocal WikiProject input/SparkPageRank/3
+    hadoop fs -rm -r output/SparkPageRank
+    cd target/
+    spark-submit --class com.spark.cis833.extra.SparkPageRank --master yarn cis833.extra-0.0.1-SNAPSHOT.jar input/SparkPageRank/3 output/SparkPageRank
+    hadoop fs -copyToLocal output/SparkPageRank/part-00000 3
+    head -n 100 3
