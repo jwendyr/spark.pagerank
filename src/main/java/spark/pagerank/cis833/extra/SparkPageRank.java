@@ -96,33 +96,11 @@ public final class SparkPageRank {
         public Double call(Double sum) {
           return 0.15 + sum * 0.85;
         }
-      });
+      }).sortByKey(false);
     }
-     // sort rank rdd on values of double to get top 100
-    // map(item => item.swap).sortByKey()
-    JavaPairRDD<String, Tuple2<Double, String>> idRankName = ranks
-        .join(mappings);
-    JavaPairRDD<Double, Tuple2<String, String>> rankIdName = idRankName
-        .mapToPair(
-            new PairFunction<Tuple2<String, Tuple2<Double, String>>, Double, Tuple2<String, String>>() {
 
-              @Override
-              public Tuple2<Double, Tuple2<String, String>> call(
-                  Tuple2<String, Tuple2<Double, String>> s)
-                  throws Exception {
-                String id = s._1;
-                Tuple2<Double, String> rankName = s._2;
-                Double rank = rankName._1;
-                Tuple2<String, String> rightPart = new Tuple2<String, String>(
-                    id, rankName._2);
-
-                return new Tuple2<Double, Tuple2<String, String>>(
-                    rank, rightPart);
-              }
-
-            }).sortByKey(false);
     // Collects all URL ranks and dump them to console.
-    List<Tuple2<String, Double>> output = rankIdName.collect();
+    List<Tuple2<String, Double>> output = rank.collect();
     for (Tuple2<?,?> tuple : output) {
         System.out.println(tuple._1() + " has rank: " + tuple._2() + ".");
     }
