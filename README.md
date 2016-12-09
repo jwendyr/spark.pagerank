@@ -1,18 +1,19 @@
 Spark Page Rank
 ==============
 
-Resource:
-http://ampcamp.berkeley.edu/5/exercises/graph-analytics-with-graphx.html#constructing-an-end-to-end-graph-analytics-pipeline-on-real-data
-http://inst.eecs.berkeley.edu/~cs61c/fa15/projs/05_1/
-https://github.com/drewnoff/simple-spark-page-rank/blob/master/src/main/scala/PageRank.scala
-http://www.programcreek.com/java-api-examples/index.php?class=org.apache.spark.api.java.JavaRDD&method=mapToPair
-http://www.programcreek.com/java-api-examples/index.php?source_dir=cdap-master/cdap-archetypes/cdap-spark-java-archetype/src/main/resources/archetype-resources/src/main/java/SparkPageRankProgram.java
-http://ampcamp.berkeley.edu/big-data-mini-course/graph-analytics-with-graphx.html
-http://kukuruku.co/hub/algorithms/social-network-analysis-spark-graphx
-http://spark.apache.org/docs/latest/graphx-programming-guide.html
-https://github.com/ajak6/Page-Rank-and-TFIDF-using-Apache-Spark/blob/master/PageRank.java
+**Resource**:
 
-To make a jar:
+    http://ampcamp.berkeley.edu/5/exercises/graph-analytics-with-graphx.html#constructing-an-end-to-end-graph-analytics-pipeline-on-real-data
+    http://inst.eecs.berkeley.edu/~cs61c/fa15/projs/05_1/
+    https://github.com/drewnoff/simple-spark-page-rank/blob/master/src/main/scala/PageRank.scala
+    http://www.programcreek.com/java-api-examples/index.php?class=org.apache.spark.api.java.JavaRDD&method=mapToPair
+    http://www.programcreek.com/java-api-examples/index.php?source_dir=cdap-master/cdap-archetypes/cdap-spark-java-archetype/src/main/resources/archetype-resources/src/main/java/SparkPageRankProgram.java
+    http://ampcamp.berkeley.edu/big-data-mini-course/graph-analytics-with-graphx.html
+    http://kukuruku.co/hub/algorithms/social-network-analysis-spark-graphx
+    http://spark.apache.org/docs/latest/graphx-programming-guide.html
+    https://github.com/ajak6/Page-Rank-and-TFIDF-using-Apache-Spark/blob/master/PageRank.java
+
+**To make a jar and run**:
 
     rm -rf spark.pagerank/
     git clone https://github.com/jwendyr/spark.pagerank.git
