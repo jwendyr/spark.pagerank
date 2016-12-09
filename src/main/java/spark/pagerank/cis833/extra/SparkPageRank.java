@@ -52,7 +52,7 @@ import org.apache.spark.sql.SparkSession;
  * </pre>
  */
 public final class SparkPageRank {
-  private static final Pattern SPACES = Pattern.compile("\\s+");
+  private static final Pattern TAB = Pattern.compile("\\t");
 
   static void showWarning() {
     String warning = "WARN: This is a naive implementation of PageRank " +
@@ -94,7 +94,7 @@ public final class SparkPageRank {
       new PairFunction<String, String, String>() {
         @Override
         public Tuple2<String, String> call(String s) {
-          String[] parts = SPACES.split(s);
+          String[] parts = TAB.split(s);
           return new Tuple2<>(parts[0], parts[1]);
         }
       }).distinct().groupByKey().cache();
