@@ -30,7 +30,7 @@ Spark Page Rank
     cd target/
     spark-submit --class com.spark.cis833.extra.SparkPageRank --master yarn cis833.extra-0.0.1-SNAPSHOT.jar input/SparkPageRank/1 output/SparkPageRank
     hadoop fs -copyToLocal output/SparkPageRank/part-00000 1
-    head -n 100 1
+    head -n 10 1
     cd ..
 
 **No.2**
@@ -43,7 +43,7 @@ Spark Page Rank
     cd target/
     spark-submit --class com.spark.cis833.extra.SparkPageRank --master yarn cis833.extra-0.0.1-SNAPSHOT.jar input/SparkPageRank/2 output/SparkPageRank
     hadoop fs -copyToLocal output/SparkPageRank/part-00000 2
-    head -n 100 2
+    head -n 10 2
     cd ..
     
 **No.3**
@@ -56,4 +56,4 @@ Spark Page Rank
     cd target/
     spark-submit --class com.spark.cis833.extra.SparkPageRank --master yarn cis833.extra-0.0.1-SNAPSHOT.jar input/SparkPageRank/3 output/SparkPageRank
     hadoop fs -copyToLocal output/SparkPageRank/part-00000 3
-    head -n 100 3
+    head -n 10 3
