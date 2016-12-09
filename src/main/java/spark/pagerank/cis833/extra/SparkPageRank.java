@@ -89,7 +89,7 @@ public final class SparkPageRank {
             }
             return results;
           }
-      });
+      }).sortByKey(false);
       // Re-calculates URL ranks based on neighbor contributions.
       ranks = contribs.reduceByKey(new Sum()).mapValues(new Function<Double, Double>() {
         @Override
@@ -98,13 +98,23 @@ public final class SparkPageRank {
         }
       }).sortByKey(false);
     }
+    
 
     // Collects all URL ranks and dump them to console.
     List<Tuple2<String, Double>> output = ranks.collect();
     for (Tuple2<?,?> tuple : output) {
         System.out.println(tuple._1() + " has rank: " + tuple._2() + ".");
     }
+    
+    JavaPairRDD<Double, String> swap1 = ranks.mapToPair(new PairFunction<Tuple2<String, Double>, Double, String>() {
+           @Override
+           public Tuple2<Double, String> call(Tuple2<String, Double> item) throws Exception {
+               return item.swap();
+           }
 
+        }).sortByKey(false);
+    
+    swap1.saveAsTextFile("output");
  
     ctx.stop();
   }
