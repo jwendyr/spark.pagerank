@@ -114,7 +114,7 @@ public final class SparkPageRank {
 
         }).sortByKey(false);
     
-    swap1.saveAsTextFile("output");
+    swap1.saveAsTextFile("oo");
  
     ctx.stop();
   }
