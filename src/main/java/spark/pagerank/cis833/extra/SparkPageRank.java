@@ -49,7 +49,7 @@ public final class SparkPageRank {
   }
   public static void main(String[] args) throws Exception {
     if (args.length < 2) {
-      System.err.println("Usage: SparkPageRank <file> <number_of_iterations>");
+      System.err.println("Usage: SparkPageRank <input> <output>");
       System.exit(1);
     }
     SparkConf sparkConf = new SparkConf().setAppName("SparkPageRank");
@@ -76,7 +76,7 @@ public final class SparkPageRank {
       }
     });
     // Calculates and updates URL ranks continuously using PageRank algorithm.
-    for (int current = 0; current < Integer.parseInt(args[1]); current++) {
+    for (int current = 0; current < Integer.parseInt("10"); current++) {
       // Calculates URL contributions to the rank of other URLs.
       JavaPairRDD<String, Double> contribs = links.join(ranks).values()
         .flatMapToPair(new PairFlatMapFunction<Tuple2<Iterable<String>, Double>, String, Double>() {
@@ -114,7 +114,7 @@ public final class SparkPageRank {
 
         }).sortByKey(false);
     
-    swap1.saveAsTextFile("oo");
+    swap1.saveAsTextFile(args[1]);
  
     ctx.stop();
   }
