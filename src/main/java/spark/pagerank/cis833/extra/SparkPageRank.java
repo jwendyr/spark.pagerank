@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
  * ...
  * where URL and their neighbors are separated by space(s).
  */
-public final class JavaPageRank {
+public final class SparkPageRank {
   private static final Pattern SPACES = Pattern.compile("\\t");
   private static class Sum implements Function2<Double, Double, Double> {
     @Override
@@ -49,10 +49,10 @@ public final class JavaPageRank {
   }
   public static void main(String[] args) throws Exception {
     if (args.length < 2) {
-      System.err.println("Usage: JavaPageRank <file> <number_of_iterations>");
+      System.err.println("Usage: SparkPageRank <file> <number_of_iterations>");
       System.exit(1);
     }
-    SparkConf sparkConf = new SparkConf().setAppName("JavaPageRank");
+    SparkConf sparkConf = new SparkConf().setAppName("SparkPageRank");
     JavaSparkContext ctx = new JavaSparkContext(sparkConf);
     // Loads in input file. It should be in format of:
     //     URL         neighbor URL
