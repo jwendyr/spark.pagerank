@@ -103,6 +103,7 @@ public final class SparkPageRank {
     for (Tuple2<?,?> tuple : output) {
         System.out.println(tuple._1() + " has rank: " + tuple._2() + ".");
     }
+    output.saveAsTextFile("0");
     ctx.stop();
   }
 }
